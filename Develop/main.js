@@ -1,4 +1,5 @@
 let workDay = {
+    "8 AM": "",
     "9 AM": "",
     "10 AM": "",
     "11 AM": "",
@@ -17,3 +18,9 @@ $(document).ready(function(){
       updateCalendarTasks(JSON.parse(localStorage.getItem('workDay')));
     }
   }) 
+
+  $('#todays-date h2').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+
+
+
