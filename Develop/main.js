@@ -1,4 +1,6 @@
-let workDay = {
+$('#todays-date h2').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+var workDay = {
     "8 AM": "",
     "9 AM": "",
     "10 AM": "",
@@ -13,13 +15,18 @@ let workDay = {
 
 $(document).ready(function(){
     if(!localStorage.getItem('workDay')) {
-      updateCalendarTasks(workDay);
+      return(workDay);
     } else {
-      updateCalendarTasks(JSON.parse(localStorage.getItem('workDay')));
+      return(JSON.parse(localStorage.getItem('workDay')));
     }
   }) 
 
-  $('#todays-date h2').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a'));
+
+  
+
+ 
+
+
 
 
 
