@@ -12,4 +12,6 @@ Summery:
 
 Application Function: 
     When you open the application the date and time of the current day will be desplayed at the top under title. Once you scroll down you will see time blocks that when you type in the block it will change colors. Grey for past, Red for present and green for future. Once you enter an event you can click on the save button and that event will be saved in local storage.
+
+    
     

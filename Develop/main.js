@@ -1,33 +1,61 @@
-$('#todays-date h2').text(moment().format('dddd') + ", " + moment().format('MMMM Do YYYY, h:mm:ss a'));
-
-var workDay = {
-    "8 AM": "",
-    "9 AM": "",
-    "10 AM": "",
-    "11 AM": "",
-    "12 AM": "",
-    "1 PM": "",
-    "2 PM": "",
-    "3 PM": "",
-    "4 PM": "",
-    "5 PM": "",
-};
-
-$(document).ready(function(){
-    if(!localStorage.getItem('workDay')) {
-      return(workDay);
-    } else {
-      return(JSON.parse(localStorage.getItem('workDay')));
-    }
-  }) 
-
-
+$(document).ready(function() {
+    var events = [];
+    
+    // listen for save button clicks
+    $(".saveBtn").on("click", function() {
+      // get nearby values
+      var value = $(this).siblings(".description").val();
+      var time = $(this).parent().attr("id");
+      var dateAdded = moment().format("dddd, MMMM Do");
   
+      events.push({description: value, time: time, date: dateAdded});
+  
+      // save the value in localStorage as time
+      localStorage.setItem("events", JSON.stringify(events));
+      
+    });
+  
+    function hourUpdater() {
+      // get current number of hours
+      var currentHour = moment().hours();
+  
+      // loop over time blocks
+      $(".time-block").each(function() {
+        var blockHour = parseInt($(this).attr("id").split("-")[1]);
+  
+      
+        if(currentHour > blockHour) {
+          $(this).addClass("past");
+        }
+        
+        else if(currentHour === blockHour) {
+          $(this).removeClass("past");
+          $(this).addClass("present");
+        }
+        
+        else {
+          $(this).removeClass("past");
+          $(this).removeClass("present");
+          $(this).addClass("future");
+        }
+        
+      });
+    }   
 
- 
+    hourUpdater();
 
-
-
-
-
-
+    var secondsLeft = 15;
+    function setTime() {
+      setInterval(function() {
+        secondsLeft--;
+    
+        if(secondsLeft === 0) {
+          hourUpdater();
+          secondsLeft = 15;
+        }
+    
+      }, 1000);
+    }
+    setTime(); 
+    
+    
