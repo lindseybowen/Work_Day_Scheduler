@@ -1,7 +1,7 @@
 # Work_Day_Scheduler
 Homework 5 Third-Party APIs: Work Day Scheduler
 
-(Work_Day_Scheduler GitHub)
+(Work_Day_Scheduler GitHub)https://github.com/lindseybowen/Work_Day_Scheduler
 
 (Work_Day_Sceduler application) 
 
